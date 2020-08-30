@@ -1,0 +1,5 @@
+Today's deadline	You have something important tot do today and you know what	22-08-2020
+Tomorrow's to-do	Something important has to be done tomorrow. Your boss would be mad if you couldn't manage to do it. Best of luck!	23-08-2020
+Next week's task	You have a task that has to be done until next week, but you can relax for now and focus on your more urgent tasks	29-08-2020
+I think you missed this one...	You had a job for last week but i think you forgot. It doesn't have major consequences, so now you can focus on your actual tasks. Good luck!	15-08-2020
+today	td	25-08-2020
