@@ -23,6 +23,8 @@ public class CalculatorView {
 
         JTextField inputField = new JTextField(15);
         inputField.setFont(BUTTON_FONT);
+        inputField.setToolTipText("Result");
+        inputField.setBorder(BorderFactory.createBevelBorder(2));
 
         JPanel buttonPanel = new JPanel(new GridLayout(BUTTON_TEXTS.length, BUTTON_TEXTS[0].length));
 
@@ -70,6 +72,8 @@ public class CalculatorView {
                 }
             }
         });
+        buttons[3][0].setBackground(Color.orange);
+        buttons[3][0].setToolTipText("Clear");
 
         //ADDITION
         buttons[0][3].addActionListener(new ActionListener() {
@@ -114,6 +118,10 @@ public class CalculatorView {
                 operandText = null;
             }
         });
+        buttons[0][3].setBackground(Color.lightGray);
+        buttons[1][3].setBackground(Color.lightGray);
+        buttons[2][3].setBackground(Color.lightGray);
+        buttons[3][3].setBackground(Color.lightGray);
 
         //DISPLAY RESULT
         buttons[3][2].addActionListener(new ActionListener() {
@@ -157,6 +165,7 @@ public class CalculatorView {
                 }
             }
         });
+        buttons[3][2].setBackground(Color.gray);
 
         //DIGITS
         for (int i = 0; i < 3; i++) {

@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="GameTest:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/GameTest_jar</output-path>
+    <root id="archive" name="GameTest.jar">
+      <element id="module-output" name="GameTest" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../PackageDemo/out/artifacts/PackageDemo_jar/PackageDemo.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

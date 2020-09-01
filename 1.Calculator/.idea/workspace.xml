@@ -3,6 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="87423d40-786d-43b3-9c61-838363191652" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CalculatorView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CalculatorView.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,7 +78,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
