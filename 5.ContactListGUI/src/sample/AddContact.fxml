@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<DialogPane fx:controller="sample.AddContactDialogController"
+            xmlns:fx="http://javafx.com/javafx">
+
+    <content>
+        <GridPane vgap="10" hgap="10">
+            <Label text="Add a new contact: " textFill="darkslategrey" >
+                <font>
+                    <Font name="Times New Roman bold" size="20"/>
+                </font>
+            </Label>
+
+            <TextField fx:id="firstNameTextField" promptText="First Name..." GridPane.rowIndex="1" GridPane.columnIndex="0" maxWidth="180"/>
+            <TextField fx:id="lastNameTextField" promptText="Last Name..." GridPane.rowIndex="1" GridPane.columnIndex="1" maxWidth="180"/>
+            <TextField fx:id="phoneNumberTextField" promptText="Phone number..." GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextArea fx:id="notesTextArea" promptText="Details about the contact..." GridPane.rowIndex="3" GridPane.columnIndex="0"
+                      GridPane.columnSpan="2" GridPane.rowSpan="2" wrapText="true"/>
+
+        </GridPane>
+    </content>
+
+</DialogPane>
