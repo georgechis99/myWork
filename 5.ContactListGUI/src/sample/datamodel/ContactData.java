@@ -24,6 +24,7 @@ public class ContactData {
 
     private static ContactData instance = new ContactData();
 
+    //here we store the name of the xml file that will contain all the data (contacts)
     private static final String CONTACTS_FILE = "contacts.xml";
 
     private static final String CONTACT = "contact";
@@ -32,19 +33,26 @@ public class ContactData {
     private static final String PHONE_NUMBER = "phone_number";
     private static final String NOTES = "notes";
 
+    //the list of all contacts (defined as an ObservableList because this interface basically wraps a normal List
+    //and is more suitable for FX Applicationsbecause it is implementing a ChangeListener that will notify whenever
+    //a change is made in the list
     private ObservableList<Contact> contacts;
 
+    //getInstance() method specific to singleton classes
     public static ContactData getInstance(){
         return instance;
     }
 
+    //getter for the list
     public ObservableList<Contact> getContacts(){
         return contacts;
     }
 
+    //private constructor specific to singleton classes
+    //here we wrap the list and give it the ObservableList functionality
     public ContactData() {
         contacts = FXCollections.observableArrayList(
-                new Contact("George","Chis","+40756891494","gangsta in the hood")
+                new Contact("George","Chis","+40756891494","me")
         );
     }
 
@@ -61,8 +69,7 @@ public class ContactData {
         contacts.set(contacts.indexOf(oldContact),newContact);
     }
 
-
-
+    //method to load previously added contacts when we open the app
     public void loadContacts() {
         try {
             // First, create a new XMLInputFactory
@@ -123,14 +130,12 @@ public class ContactData {
                 }
             }
         }
-        catch (FileNotFoundException e) {
-            //e.printStackTrace();
-        }
-        catch (XMLStreamException e) {
+        catch (FileNotFoundException | XMLStreamException e) {
             e.printStackTrace();
         }
     }
 
+    //method to save the contacts when closing the app
     public void saveContacts() {
 
         try {
@@ -152,7 +157,9 @@ public class ContactData {
             eventWriter.add(contactsStartElement);
             eventWriter.add(end);
 
+            //here we iterate through the list of contacts stored in the heap and save them to the xml file
             for (Contact contact: contacts) {
+                //this method is defined below
                 saveContact(eventWriter, eventFactory, contact);
             }
 

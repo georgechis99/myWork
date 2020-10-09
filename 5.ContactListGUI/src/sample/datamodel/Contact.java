@@ -7,6 +7,7 @@ public class Contact {
     private String phoneNumber;
     private String notes;
 
+    //parametrized constructor
     public Contact(String firstName, String lastName, String phoneNumber, String notes) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -14,9 +15,11 @@ public class Contact {
         this.notes = notes;
     }
 
+    //empty constructor
     public Contact() {
     }
 
+    //Setters and Getters
     public String getFirstName() {
         return firstName;
     }

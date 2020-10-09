@@ -1,7 +1,6 @@
 package sample;
 
 import javafx.application.Platform;
-import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -41,12 +40,6 @@ public class Controller {
     @FXML
     TableColumn notesCol;
 
-    //for searching/filtering the contact list
-    @FXML
-    private TextField searchBar;
-    @FXML
-    private ChoiceBox searchChoice;
-
     public void initialize() {
 
         ContactData contactData = new ContactData();
@@ -79,16 +72,6 @@ public class Controller {
             public void handle(MouseEvent mouseEvent) {
                 if (mouseEvent.getButton() == MouseButton.SECONDARY) {
                     contextMenu.show(tableView, mouseEvent.getScreenX(), mouseEvent.getScreenY());
-                }
-            }
-        });
-
-        //to show the editDialog when double-clicking an item
-        tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                if(mouseEvent.getButton() == MouseButton.PRIMARY && mouseEvent.getClickCount() == 2){
-                    showEditContactDialog();
                 }
             }
         });
@@ -131,40 +114,9 @@ public class Controller {
             }
         });
 
-        FilteredList<Contact> filteredContacts = new FilteredList<>(sortedContacts, p -> true);
-
-        searchBar.setOnKeyReleased(keyEvent ->
-        {
-            switch ((String) searchChoice.getValue()) {
-                case "First Name":
-                    filteredContacts.setPredicate(p -> p.getFirstName().toLowerCase()
-                            .contains(searchBar.getText().toLowerCase().trim()));
-                    break;
-                case "Last Name":
-                    filteredContacts.setPredicate(p -> p.getLastName().toLowerCase()
-                            .contains(searchBar.getText().toLowerCase().trim()));
-                    break;
-                case "Phone Number":
-                    filteredContacts.setPredicate(p -> p.getPhoneNumber().toLowerCase()
-                            .contains(searchBar.getText().toLowerCase().trim()));
-                    break;
-            }
-        });
-
-        searchChoice.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) ->
-                {
-                    if(newVal != null){
-                        searchBar.setText("");
-                        filteredContacts.setPredicate(null);
-                    }
-                }
-                );
-
-        tableView.setItems(filteredContacts);
+        tableView.setItems(sortedContacts);
         tableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         tableView.getSelectionModel().selectFirst();
-
-        searchChoice.getSelectionModel().selectFirst();
     }
 
     //this opens up a dialog to edit a contact
@@ -208,7 +160,7 @@ public class Controller {
                 Contact newContact = controller.processResults(oldContact);
             }
         } else {
-            System.out.println("No item selected");
+            System.out.println("Error");
         }
     }
 
@@ -254,15 +206,6 @@ public class Controller {
         }
     }
 
-    @FXML
-    public void deleteContact() {
-        Contact selectedContact = tableView.getSelectionModel().getSelectedItem();
-        if (selectedContact != null) {
-            deleteContact(selectedContact);
-        } else {
-            System.out.println("No item selected");
-        }
-    }
 
     @FXML
     public void handleExit() {

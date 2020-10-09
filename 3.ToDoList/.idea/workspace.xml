@@ -2,23 +2,51 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf6bf63c-5d27-45a5-ae0b-58f8acd09191" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../6.FaceDetectionApplication/src/com/George/Model/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../6.FaceDetectionApplication/src/com/George/OpenCV/FaceDetection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../6.FaceDetectionApplication/src/com/George/OpenCV/WebcamDetection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../6.FaceDetectionApplication/src/com/George/View/CameraPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../6.FaceDetectionApplication/src/com/George/View/ImagePanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../6.FaceDetectionApplication/src/com/George/View/MainFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../6.FaceDetectionApplication/src/com/George/View/WebcamDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../smallProjectsAndCode/JavaNIO/data.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SceneBuilder/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SceneBuilder/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SceneBuilder/.idea/description.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SceneBuilder/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SceneBuilder/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SceneBuilder/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SceneBuilder/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SceneBuilder/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SceneBuilder/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SceneBuilder/SceneBuilder.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SceneBuilder/out/production/SceneBuilder/sample/Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SceneBuilder/out/production/SceneBuilder/sample/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SceneBuilder/out/production/SceneBuilder/sample/sample.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SceneBuilder/src/sample/Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SceneBuilder/src/sample/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SceneBuilder/src/sample/sample.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/3.ToDoList.iml" beforeDir="false" afterPath="$PROJECT_DIR$/3.ToDoList.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javafx-swt.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javafx.base.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javafx.controls.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javafx.fxml.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javafx.graphics.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javafx.media.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javafx.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javafx.swing.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/javafx.web.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Controller$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Controller$10$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Controller$10$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Controller$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Controller$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Controller$11$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Controller$11$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Controller$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Controller$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Controller$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Controller$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Controller$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Controller$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Controller$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Controller$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Controller$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Controller$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Controller$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Controller$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Controller$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Controller$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Controller$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Controller$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Controller$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Controller$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3.ToDoList/sample/DialogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3.ToDoList/sample/DialogController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3.ToDoList/sample/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3.ToDoList/sample/datamodel/ToDoData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3.ToDoList/sample/datamodel/ToDoData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/3.ToDoList/sample/datamodel/ToDoItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/3.ToDoList/sample/datamodel/ToDoItem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/AddContactDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/AddContactDialogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/Datamodel/ContactData.java" beforeDir="false" afterPath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/Datamodel/ContactData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/EditContactDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/EditContactDialogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/datamodel/Contact.java" beforeDir="false" afterPath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/Datamodel/Contact.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,10 +60,10 @@
   <component name="ProjectId" id="1grcbnL1KSFlwrWceX7L1UdamZk" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../lib/javafx-sdk-11.0.2/lib/javafx-swt.jar!/" />
-    <property name="project.structure.last.edited" value="Global Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../JavaMasterclass Udemy/lib/javafx-sdk-11.0.2/lib/javafx.web.jar!/" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunDashboard">

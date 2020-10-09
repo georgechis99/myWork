@@ -6,8 +6,6 @@ import javafx.scene.control.TextField;
 import sample.datamodel.Contact;
 import sample.datamodel.ContactData;
 
-import java.io.IOException;
-
 public class EditContactDialogController{
 
     public void setFirstNameTextField(String firstNameTextField) {

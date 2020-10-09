@@ -5,10 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import sample.datamodel.Contact;
 import sample.datamodel.ContactData;
-
-import java.io.IOException;
 
 public class Main extends Application {
 

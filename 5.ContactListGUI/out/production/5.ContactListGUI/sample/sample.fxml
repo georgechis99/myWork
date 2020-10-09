@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import java.lang.String?>
-<BorderPane fx:id="mainBorderPane" fx:controller="sample.Controller"
+<BorderPane fx:id="mainBorderPane" fx:controller="sample.Controller.Controller"
             xmlns:fx="http://javafx.com/fxml">
     <top>
         <MenuBar>
