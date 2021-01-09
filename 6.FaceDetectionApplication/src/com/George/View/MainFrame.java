@@ -89,13 +89,8 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                SwingUtilities.invokeLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        WebcamDialog webcamDialog = new WebcamDialog("Webcam Face Detection");
-                        webcamDialog.displayScreen();
-                    }
-                });
+                Thread t1 = new Thread(new WebcamDialog("Webcam"));
+                t1.start();
             }
         });
 

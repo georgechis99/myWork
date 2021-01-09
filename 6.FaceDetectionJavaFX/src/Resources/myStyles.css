@@ -1,0 +1,22 @@
+.background200x450 {
+    -fx-background-image: url("background200x450.jpg");
+    -fx-background-size: 100% 100%;
+}
+
+.background800x500 {
+    -fx-background-image: url("splashScreen.jpg");
+    -fx-background-size: 100% 100%;
+}
+
+.background800x150 {
+    -fx-background-image: url("background800x150.jpg");
+    -fx-background-size: 100% 100%;
+}
+
+.button{
+
+}
+
+.button:hover {
+
+}

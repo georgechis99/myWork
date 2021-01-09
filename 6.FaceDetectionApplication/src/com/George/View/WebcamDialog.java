@@ -7,7 +7,7 @@ import org.opencv.videoio.VideoCapture;
 
 import javax.swing.*;
 
-public class WebcamDialog extends JFrame {
+public class WebcamDialog extends JFrame implements Runnable{
 
     private static final long serialVersionUID = 1L;
     private WebcamDetection detector;
@@ -28,6 +28,12 @@ public class WebcamDialog extends JFrame {
         setVisible(true);
     }
 
+    @Override
+    public void run() {
+        System.out.println("Webcam thread started");
+        this.displayScreen();
+    }
+
     public void displayScreen(){
 
         Mat webcamImage = new Mat();
@@ -40,6 +46,7 @@ public class WebcamDialog extends JFrame {
 //        videoCapture.open(0);
 
         if(videoCapture.isOpened()){
+            System.out.println("Camera opened");
 
             while (true){
 
@@ -47,10 +54,10 @@ public class WebcamDialog extends JFrame {
 
                 if(!webcamImage.empty()){
 
-//                    setSize(webcamImage.width() +  50 , webcamImage.height() + 70);
-//                    webcamImage = detector.detect(webcamImage);
-//                    cameraPanel.convertMatToImage(webcamImage);
-//                    cameraPanel.repaint();
+                    setSize(webcamImage.width() +  30 , webcamImage.height() + 55);
+                    webcamImage = detector.detect(webcamImage);
+                    cameraPanel.convertMatToImage(webcamImage);
+                    cameraPanel.repaint();
                 } else {
                     System.out.println("Problem loading webcam");
                     break;
