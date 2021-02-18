@@ -185,11 +185,11 @@ public class Controller {
         dialog.getDialogPane().getButtonTypes().add(ButtonType.OK);
         dialog.getDialogPane().getButtonTypes().add(ButtonType.CANCEL);
 
-        Optional<ButtonType> result = dialog.showAndWait();
-        if (result.isPresent() && result.get() == ButtonType.OK) {
-            AddContactDialogController controller = fxmlLoader.getController();
-            Contact newContact = controller.processResults();
-        }
+//        Optional<ButtonType> result = dialog.showAndWait();
+//        if (result.isPresent() && result.get() == ButtonType.OK) {
+//            AddContactDialogController controller = fxmlLoader.getController();
+//            Contact newContact = controller.processResults();
+//        }
 
     }
 

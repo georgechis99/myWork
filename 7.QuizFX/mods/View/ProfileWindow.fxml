@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<BorderPane fx:id="rootPane"
+            styleClass="profilePane"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Controller.ProfileWindowController">
+
+    <top>
+        <VBox>
+            <ImageView fx:id="imageView" fitHeight="200" fitWidth="200" preserveRatio="false">
+            </ImageView>
+            <Button fx:id="addImage" text="Add a profile image" maxWidth="200"/>
+        </VBox>
+
+
+    </top>
+    <center>
+
+    </center>
+    <left>
+
+    </left>
+    <right>
+
+    </right>
+
+</BorderPane>

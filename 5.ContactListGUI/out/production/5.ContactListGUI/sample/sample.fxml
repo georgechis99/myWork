@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import java.lang.String?>
-<BorderPane fx:id="mainBorderPane" fx:controller="sample.Controller.Controller"
+<BorderPane fx:id="mainBorderPane" fx:controller="sample.Controller"
             xmlns:fx="http://javafx.com/fxml">
     <top>
         <MenuBar>
@@ -30,7 +30,7 @@
                     <SeparatorMenuItem/>
                     <MenuItem onAction="#showEditContactDialog" text="Edit..."/>
                     <SeparatorMenuItem/>
-                    <MenuItem onAction="#deleteContact" text="Delete..."/>
+<!--                    <MenuItem onAction="#deleteContact" text="Delete..."/>-->
                 </items>
             </Menu>
         </MenuBar>

@@ -2,8 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="87423d40-786d-43b3-9c61-838363191652" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../SceneBuilder/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SceneBuilder/.idea/description.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SceneBuilder/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SceneBuilder/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SceneBuilder/out/production/SceneBuilder/sample/Controller.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SceneBuilder/out/production/SceneBuilder/sample/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SceneBuilder/out/production/SceneBuilder/sample/sample.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SceneBuilder/src/sample/Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SceneBuilder/src/sample/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../SceneBuilder/src/sample/sample.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$4.class" afterDir="false" />
@@ -13,7 +22,80 @@
       <change beforePath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$8.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView$9.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/1.Calculator/CalculatorView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CalculatorView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CalculatorView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../3.ToDoList/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../3.ToDoList/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Controller$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Controller$10$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Controller$10$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Controller$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Controller$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Controller$11$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Controller$11$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Controller$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Controller$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Controller$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Controller$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Controller$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Controller$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Controller$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Controller$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Controller$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Controller$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Controller$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Controller$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Controller$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Controller$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Controller$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Controller$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Controller$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Controller$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/DialogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/DialogController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/datamodel/ToDoData.class" beforeDir="false" afterPath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/datamodel/ToDoData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/datamodel/ToDoItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/datamodel/ToDoItem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/sample.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../3.ToDoList/out/production/3.ToDoList/sample/toDoItemDialog.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/.idea/$PRODUCT_WORKSPACE_FILE$" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../SceneBuilder/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SceneBuilder/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SceneBuilder/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SceneBuilder/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/5.ContactListGUI.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/JavaFX_Contacts_Challenge.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../SceneBuilder/SceneBuilder.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/contacts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../5.ContactListGUI/contacts.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/5.ContactListGUI/META-INF/5.ContactListGUI.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/5.ContactListGUI/sample/AddContact.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/5.ContactListGUI/sample/AddContactDialogController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/5.ContactListGUI/sample/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../5.ContactListGUI/out/production/5.ContactListGUI/sample/Controller$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/5.ContactListGUI/sample/Controller$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../5.ContactListGUI/out/production/5.ContactListGUI/sample/Controller$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/5.ContactListGUI/sample/Controller$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../5.ContactListGUI/out/production/5.ContactListGUI/sample/Controller$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/5.ContactListGUI/sample/Controller$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/../5.ContactListGUI/out/production/5.ContactListGUI/sample/Controller$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/5.ContactListGUI/sample/Controller$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/../5.ContactListGUI/out/production/5.ContactListGUI/sample/Controller$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/5.ContactListGUI/sample/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/../5.ContactListGUI/out/production/5.ContactListGUI/sample/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/5.ContactListGUI/sample/EditContact.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/5.ContactListGUI/sample/EditContactDialogController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../5.ContactListGUI/out/production/5.ContactListGUI/sample/EditContactDialogController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/5.ContactListGUI/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../5.ContactListGUI/out/production/5.ContactListGUI/sample/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/5.ContactListGUI/sample/contacts.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/5.ContactListGUI/sample/datamodel/Contact.class" beforeDir="false" afterPath="$PROJECT_DIR$/../5.ContactListGUI/out/production/5.ContactListGUI/sample/datamodel/Contact.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/5.ContactListGUI/sample/datamodel/ContactData.class" beforeDir="false" afterPath="$PROJECT_DIR$/../5.ContactListGUI/out/production/5.ContactListGUI/sample/datamodel/ContactData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/5.ContactListGUI/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../5.ContactListGUI/out/production/5.ContactListGUI/sample/sample.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/JavaFX_Contacts_Challenge/META-INF/JavaFX_Contacts_Challenge.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/JavaFX_Contacts_Challenge/sample/AddContact.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/JavaFX_Contacts_Challenge/sample/AddContactDialogController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/JavaFX_Contacts_Challenge/sample/Controller$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/JavaFX_Contacts_Challenge/sample/Controller$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/JavaFX_Contacts_Challenge/sample/Controller$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/JavaFX_Contacts_Challenge/sample/Controller$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/JavaFX_Contacts_Challenge/sample/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/JavaFX_Contacts_Challenge/sample/EditContact.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/JavaFX_Contacts_Challenge/sample/EditContactDialogController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/JavaFX_Contacts_Challenge/sample/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/JavaFX_Contacts_Challenge/sample/datamodel/Contact.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/JavaFX_Contacts_Challenge/sample/datamodel/ContactData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/out/production/JavaFX_Contacts_Challenge/sample/sample.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/AddContact.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/AddContactDialogController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/EditContact.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/EditContactDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/EditContactDialogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/contacts.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/datamodel/Contact.java" beforeDir="false" afterPath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/datamodel/Contact.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/datamodel/ContactData.java" beforeDir="false" afterPath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/datamodel/ContactData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/sample.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SceneBuilder/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SceneBuilder/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SceneBuilder/out/production/5.ContactListGUI/META-INF/5.ContactListGUI.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/../SceneBuilder/out/production/5.ContactListGUI/META-INF/5.ContactListGUI.kotlin_module" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SceneBuilder/out/production/5.ContactListGUI/sample/contacts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SceneBuilder/out/production/5.ContactListGUI/sample/contacts.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SceneBuilder/src/sample/contacts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SceneBuilder/src/sample/contacts.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

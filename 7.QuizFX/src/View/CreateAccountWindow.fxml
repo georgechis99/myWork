@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<DialogPane
+        styleClass="root2"
+        xmlns:fx="http://javafx.com/fxml"
+        fx:controller="Controller.CreateAccountWindowController">
+    <content>
+        <GridPane hgap="10" vgap="15">
+
+            <Label styleClass="headerLabel2" text="THE QUIZ" prefHeight="100" GridPane.rowIndex="0"
+                   GridPane.columnIndex="0">
+            </Label>
+
+            <VBox GridPane.rowIndex="1" GridPane.columnIndex="0">
+                <Label text="USERNAME ">
+                </Label>
+
+                <TextField fx:id="userField">
+                    <tooltip>
+                        <Tooltip text="At least 6 characters."/>
+                    </tooltip>
+                </TextField>
+
+                <Label fx:id="userLabel" text="*At least 6 characters." styleClass="annotations">
+                </Label>
+
+                <Label text="PASSWORD ">
+                </Label>
+
+                <PasswordField fx:id="passwordField">
+                    <tooltip>
+                        <Tooltip text="At least 6 characters, one UPERCASE letter AND one number."/>
+                    </tooltip>
+                </PasswordField>
+
+                <Label fx:id="passwordLabel" text="*At least 6 characters, one UPERCASE letter and one number." styleClass="annotations">
+                </Label>
+            </VBox>
+
+            <Button fx:id="createAccountButton" text="Create account" GridPane.rowIndex="2" GridPane.columnIndex="0">
+            </Button>
+
+
+        </GridPane>
+    </content>
+
+</DialogPane>

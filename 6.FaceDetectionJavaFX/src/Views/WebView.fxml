@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane fx:id="anchorPaneWeb" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.WebViewController">
+   <children>
+      <ToolBar prefHeight="15.0" prefWidth="900.0">
+        <items>
+          <Button fx:id="backToAppButton" mnemonicParsing="false" onAction="#backToApp" text="Back To App">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+        </items>
+      </ToolBar>
+      <WebView fx:id="webView" layoutY="36.0" prefHeight="564.0" prefWidth="900.0" />
+   </children>
+</AnchorPane>

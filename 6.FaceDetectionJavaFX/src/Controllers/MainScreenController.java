@@ -2,6 +2,7 @@ package Controllers;
 
 import OpenCV.FaceDetection;
 import OpenCV.WebcamFaceDetection;
+import javafx.application.HostServices;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -10,19 +11,26 @@ import javafx.concurrent.WorkerStateEvent;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.opencv.core.Mat;
 import org.opencv.videoio.VideoCapture;
+import javafx.application.HostServices;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.io.File;
-import java.sql.SQLOutput;
+import java.io.IOException;
+import java.util.Objects;
+import java.util.Optional;
 
 public class MainScreenController {
 
@@ -55,7 +63,12 @@ public class MainScreenController {
     @FXML
     private MenuBar menuBar;
 
+    private Parent root;
+
+
     public void initialize() {
+
+        webcamThread = new Thread();
 
         //to set the choicebox and give functionality to it (so you can change the Haar xml file used in detection)
         String[] xmlFiles = {"haarcascade_frontalface_default.xml",
@@ -103,18 +116,18 @@ public class MainScreenController {
 
         webcamThread.stop();
 
-        progressBarLabel.setVisible(false);
-        //the file image that will be loaded into the app to be scanned
-        Stage stage = (Stage) anchorPane.getScene().getWindow();
-        file = fileChooser.showOpenDialog(stage);
-        if (file != null) {
-            Image image = new Image(file.toURI().toString());
-            imageView.setFitHeight(500);
-            imageView.setFitWidth(670);
-            imageView.setPreserveRatio(true);
-            imageView.setImage(image);
-            detectButton.setDisable(false);
-        }
+                progressBarLabel.setVisible(false);
+                //the file image that will be loaded into the app to be scanned
+                Stage stage = (Stage) anchorPane.getScene().getWindow();
+                file = fileChooser.showOpenDialog(stage);
+                if (file != null) {
+                    Image image = new Image(file.toURI().toString());
+                    imageView.setFitHeight(500);
+                    imageView.setFitWidth(670);
+                    imageView.setPreserveRatio(true);
+                    imageView.setImage(image);
+                    detectButton.setDisable(false);
+                }
     }
 
     public boolean convertMatToImage(Mat matBGR) {
@@ -191,5 +204,54 @@ public class MainScreenController {
         progressBar.progressProperty().bind(task.progressProperty());
     }
 
+    public static int goToURL = 0;
 
+    public void openGitHub() {
+        goToURL = 1;
+        switchScene("Views/WebView.fxml",anchorPane);
+    }
+
+    public void findOutMore() {
+        goToURL = 2;
+        switchScene("Views/WebView.fxml",anchorPane);
+    }
+
+    private HostServices hostServices ;
+
+    public HostServices getHostServices() {
+        return hostServices ;
+    }
+
+    public void openDocumentation() {
+        File documentationPDF = new File("C:\\Users\\ACER DEMO\\Desktop\\Faculta\\Java\\" +
+                "GitHub Respository\\myWork\\6.FaceDetectionJavaFX\\src\\Resources\\docu.pdf");
+
+        HostServices hostServices = getHostServices();
+        hostServices.showDocument(documentationPDF.getAbsolutePath());
+    }
+
+    public void logOut() {
+        Alert areYouSure = new Alert(Alert.AlertType.CONFIRMATION);
+        areYouSure.setTitle("Logging Out");
+        areYouSure.setHeaderText("Are you sure you want to Log Out?");
+        areYouSure.setContentText("Select 'OK' in order to Log Out, or 'Cancel' to abort!");
+        areYouSure.initStyle(StageStyle.UNDECORATED);
+        Optional<ButtonType> result = areYouSure.showAndWait();
+        if (result.isPresent() && (result.get() == ButtonType.OK)){
+            switchScene("Views/SplashScreen.fxml",anchorPane);
+        }
+    }
+
+    public void switchScene(String scenePath, Parent currentControl) {
+        try {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(scenePath)));
+            Stage stage = (Stage)currentControl.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -11,6 +11,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -40,7 +42,12 @@ public class CreateAccountScreenController {
     @FXML
     private Label phoneNumberLabel;
 
+    private static double xOffset = 0;
+    private static double yOffset = 0;
+
     public void initialize() {
+
+        makeWindowDraggable(usernameField);
         //to check if the username has AT LEAST 6 CHARACTERS
         BooleanBinding userValid = Bindings.createBooleanBinding(() -> {
             boolean charNumberFlag = false; // checks the number of characters in the username
@@ -147,5 +154,26 @@ public class CreateAccountScreenController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void makeWindowDraggable(Region pane){
+        //to make the window draggable (it is defined with no decorations)
+        pane.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Stage stage = (Stage) pane.getScene().getWindow();
+                xOffset = stage.getX() - event.getScreenX();
+                yOffset = stage.getY() - event.getScreenY();
+            }
+        });
+
+        pane.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Stage stage = (Stage) pane.getScene().getWindow();
+                stage.setX(event.getScreenX() + xOffset);
+                stage.setY(event.getScreenY() + yOffset);
+            }
+        });
     }
 }

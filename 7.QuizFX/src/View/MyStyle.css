@@ -1,0 +1,56 @@
+.root{
+    -fx-background-color: salmon;
+    -fx-font-variant: small-caps;
+    -fx-font-family: Verdana, Geneva, Tahoma, sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+}
+
+.root2 {
+    -fx-background-color: lightblue;
+    -fx-font-variant: small-caps;
+    -fx-font-family: Verdana, Geneva, Tahoma, sans-serif;
+    -fx-font-weight: bold;
+}
+
+.profilePane {
+    -fx-background-color: lightblue;
+    -fx-font-family: Verdana, Geneva, Tahoma, sans-serif;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-text-fill: white;
+}
+
+.profileButton {
+
+}
+
+.profileButton:hover {
+    -fx-cursor: pointer;
+    -fx-background-color: darkblue;
+}
+
+.headerLabel {
+    -fx-stroke: firebrick;
+    -fx-stroke-width: 2px;
+    -fx-font-size: 30px;
+    -fx-text-fill: lightblue;
+    -fx-border-style: solid;
+    -fx-border-color: lightblue;
+    -fx-border-radius: 10%;
+    -fx-border-width: 5px;
+}
+
+.headerLabel2 {
+    -fx-font-size: 30px;
+    -fx-text-fill: salmon;
+    -fx-border-style: solid;
+    -fx-border-color: salmon;
+    -fx-border-radius: 10%;
+    -fx-border-width: 5px;
+}
+
+.annotations {
+    -fx-font-size: 10px;
+    -fx-text-fill: red;
+}

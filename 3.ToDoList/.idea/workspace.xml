@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf6bf63c-5d27-45a5-ae0b-58f8acd09191" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/../6.FaceDetectionApplication/src/com/George/Model/Constants.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../6.FaceDetectionApplication/src/com/George/OpenCV/FaceDetection.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../6.FaceDetectionApplication/src/com/George/OpenCV/WebcamDetection.java" afterDir="false" />
@@ -47,6 +48,30 @@
       <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/EditContactDialogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/EditContactDialogController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/datamodel/Contact.java" beforeDir="false" afterPath="$PROJECT_DIR$/../5.ContactListGUI/src/sample/Datamodel/Contact.java" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/../SceneBuilder/SceneBuilder.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.Calculator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../1.Calculator/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.Calculator/out/production/1.Calculator/CalculatorView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.Calculator/out/production/1.Calculator/CalculatorView$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.Calculator/out/production/1.Calculator/CalculatorView$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.Calculator/out/production/1.Calculator/CalculatorView$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.Calculator/out/production/1.Calculator/CalculatorView$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.Calculator/out/production/1.Calculator/CalculatorView$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.Calculator/out/production/1.Calculator/CalculatorView$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.Calculator/out/production/1.Calculator/CalculatorView$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.Calculator/out/production/1.Calculator/CalculatorView$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.Calculator/out/production/1.Calculator/CalculatorView$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.Calculator/out/production/1.Calculator/CalculatorView$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.Calculator/out/production/1.Calculator/CalculatorView$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.Calculator/out/production/1.Calculator/CalculatorView$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.Calculator/out/production/1.Calculator/CalculatorView$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.Calculator/out/production/1.Calculator/CalculatorView$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.Calculator/out/production/1.Calculator/CalculatorView$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.Calculator/out/production/1.Calculator/CalculatorView$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.Calculator/out/production/1.Calculator/CalculatorView$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.Calculator/out/production/1.Calculator/CalculatorView.class" beforeDir="false" afterPath="$PROJECT_DIR$/../1.Calculator/out/production/1.Calculator/CalculatorView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../1.Calculator/src/CalculatorView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../1.Calculator/src/CalculatorView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/description.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+>>>>>>> parent of 8d4be72... UpdateProjects
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,26 +103,6 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="sample.Main" />
-      <module name="3.ToDoList" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="sample.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Main" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -116,9 +121,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
