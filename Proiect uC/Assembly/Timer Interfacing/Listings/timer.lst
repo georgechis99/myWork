@@ -1,0 +1,52 @@
+A51 MACRO ASSEMBLER  TIMER                                                                05/23/2021 13:01:48 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\timer.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE timer.a51 SET(SMALL) DEBUG PRINT(.\Listings\timer.lst) OBJECT(.\Objects
+                      \timer.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000h
+                       2             
+0000 758901            3     mov tmod, #01h
+                       4     
+0003 7590FF            5     here:   mov p1, #0ffh
+0006 110F              6                     acall t0_m1_delay_5ms
+0008 759000            7                     mov p1, #00h
+000B 110F              8                     acall t0_m1_delay_5ms
+000D 80F4              9                     sjmp here
+                      10     
+000F 758CEE           11     t0_m1_delay_5ms: mov th0, #0eeh
+0012 758A00           12                                     mov tl0, #00h
+0015 D28C             13                                     setb tr0
+0017 308DFD           14                             here1:jnb tf0, here1
+001A C28C             15                                     clr tr0
+001C C28D             16                                     clr tf0
+001E 22               17                                     ret
+                      18                                     
+                      19     end
+A51 MACRO ASSEMBLER  TIMER                                                                05/23/2021 13:01:48 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+HERE . . . . . . .  C ADDR   0003H   A   
+HERE1. . . . . . .  C ADDR   0017H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+T0_M1_DELAY_5MS. .  C ADDR   000FH   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

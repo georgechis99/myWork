@@ -1,0 +1,3 @@
+".\Objects\code.obj" 
+TO ".\Objects\temp_and_hum" 
+PRINT(".\Listings\temp_and_hum.m51")

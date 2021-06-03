@@ -1,0 +1,138 @@
+C51 COMPILER V9.60.0.0   LCD                                                               05/22/2021 18:28:33 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE LCD
+OBJECT MODULE PLACED IN .\Objects\lcd.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE lcd.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\lcd.l
+                    -st) TABS(2) OBJECT(.\Objects\lcd.obj)
+
+line level    source
+
+   1          #include<reg52.h>
+   2          
+   3          //RS      P2.0
+   4          //RW      P2.1
+   5          //E       P2.2
+   6          //D0-D7   P1.0-P1.7
+   7          
+   8          // 11 total pins needed for interfacing the LCD
+   9          
+  10          //renaming port pins that we'll use frequently
+  11          sbit RS = P2^0;
+  12          sbit RW = P2^1;
+  13          sbit E = P2^2;
+  14          
+  15          void send_command(unsigned char command_value);
+  16          void send_data(unsigned char data_value);
+  17          void setup_lcd(void);
+  18          void delay_ms(unsigned int time);
+  19          
+  20          void display_number(unsigned int value);
+  21          void display_digit(unsigned char value);
+  22          
+  23          void main(){
+  24   1        
+  25   1        //2 lines and 5×7 matrix
+  26   1        send_command(0x38);
+  27   1        
+  28   1        //Display ON, cursor blinking
+  29   1        //send_command(0x0E);
+  30   1        
+  31   1        //Display ON, cursor OFF
+  32   1        send_command(0x0C);
+  33   1        
+  34   1        //Clear display screen
+  35   1        send_command(0x01);
+  36   1        
+  37   1        while(1){
+  38   2        //force cursor on first line
+  39   2        send_command(0x80);
+  40   2        send_data('G');  //ascii value is sent
+  41   2        send_data('e');
+  42   2        send_data('o');
+  43   2        send_data('r');
+  44   2        send_data('g');
+  45   2        send_data('e');
+  46   2        
+  47   2        //force cursor on second line
+  48   2        send_command(0xC0);
+  49   2        send_data('C');
+  50   2        send_data('h');
+  51   2        send_data('i');
+  52   2        send_data('s');
+  53   2          
+  54   2        //JUST TESTING THIS FUNCTION
+C51 COMPILER V9.60.0.0   LCD                                                               05/22/2021 18:28:33 PAGE 2   
+
+  55   2        display_number(123);
+  56   2        }
+  57   1      }
+  58          
+  59          void send_command(unsigned char command_value){
+  60   1        P1 = command_value;
+  61   1        RS = 0; //command mode
+  62   1        RW = 0; //write mode
+  63   1        
+  64   1        E = 1;            //HIGH to LOW impulse must be
+  65   1        delay_ms(10);     //applied in order to latch _data;
+  66   1        E = 0;            //the signl must be HIGH for at least 450ns, hence the delay
+  67   1      }
+  68          
+  69          void send_data(unsigned char data_value){
+  70   1        P1 = data_value;
+  71   1        RS = 1; //_data mode
+  72   1        RW = 0; 
+  73   1        
+  74   1        E = 1;            
+  75   1        delay_ms(10);     
+  76   1        E = 0;           
+  77   1      }
+  78          
+  79          void delay_ms(unsigned int time){
+  80   1        unsigned int i,j;
+  81   1        
+  82   1        for(i=0; i<time; i++){  //time ms
+  83   2      
+  84   2          for(j=0; j<113; j++); //1ms 
+  85   2        }
+  86   1      }
+  87          
+  88          void display_digit(unsigned char value){
+  89   1        unsigned char ascii = value + 48;
+  90   1        send_data(ascii);
+  91   1      }
+  92          
+  93          void display_number(unsigned int value){
+  94   1        
+  95   1        unsigned char num[10];
+  96   1        
+  97   1        int p;
+  98   1        int k=0;
+  99   1        while(value>0)
+ 100   1        {
+ 101   2          num[k]=value%10;
+ 102   2          value=value/10;
+ 103   2          k++;
+ 104   2        }
+ 105   1        k--;
+ 106   1        for (p=k;p>=0;p--)
+ 107   1        {
+ 108   2          display_digit(num[p]);
+ 109   2        }
+ 110   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    247    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+C51 COMPILER V9.60.0.0   LCD                                                               05/22/2021 18:28:33 PAGE 3   
+
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      14
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

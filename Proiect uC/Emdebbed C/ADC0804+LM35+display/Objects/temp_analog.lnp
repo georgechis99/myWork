@@ -1,0 +1,3 @@
+".\Objects\temp_analog.obj" 
+TO ".\Objects\temp_analog" 
+PRINT(".\Listings\temp_analog.m51")

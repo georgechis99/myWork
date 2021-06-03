@@ -1,0 +1,391 @@
+C51 COMPILER V9.60.0.0   TEMP_ANALOG                                                       05/25/2021 20:20:43 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE TEMP_ANALOG
+OBJECT MODULE PLACED IN .\Objects\temp_analog.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE temp_analog.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listin
+                    -gs\temp_analog.lst) TABS(2) OBJECT(.\Objects\temp_analog.obj)
+
+line level    source
+
+   1          #include<reg52.h>
+   2          
+   3          #define lcd P2
+   4          
+   5          //lcd
+   6          sbit rs = P0^5;
+   7          sbit rw = P0^6;
+   8          sbit en = P0^7;
+   9          
+  10          //adc
+  11          sbit rd = P0^0;
+  12          sbit wr = P0^1;
+  13          sbit intr = P0^2;
+  14          
+  15          //humidity sensor
+  16          sbit DHT11 = P3^7;
+  17          int int_rh; //integral humidity (RH) value
+  18          int dec_rh; //decimal humidity (RH) value
+  19          int int_temp; //integral temperature value
+  20          int dec_temp; //decimal temperature value
+  21          int checksum; //checksum = int_rh + dec_rh + int_temp + dec_temp (used to further validate the received _d
+             -ata)
+  22          
+  23          //leds
+  24          sbit temp_err = P0^4;
+  25          sbit hum_err = P3^0;
+  26          
+  27          //button
+  28          sbit button = P0^3;
+  29          
+  30          void delay_5ms();
+  31          void delay_20ms();
+  32          void delay_50ms();
+  33          void delay_1s();
+  34          void delay(unsigned int count);
+  35          
+  36          void send_command(unsigned int command_value);
+  37          void send_data(unsigned int data_value);
+  38          void lcd_initialization();
+  39          void lcd_setup();
+  40          
+  41          void check_button_pressed();
+  42          
+  43          void display(unsigned char *s);
+  44          void display_temperature();
+  45          void display_humidity();
+  46          
+  47          unsigned char adc();
+  48          unsigned char temperature, digital_value, humidity;
+  49          
+  50          void request();
+  51          void response();
+  52          unsigned int receive_data();
+  53          
+C51 COMPILER V9.60.0.0   TEMP_ANALOG                                                       05/25/2021 20:20:43 PAGE 2   
+
+  54          void read_temperature();
+  55          void read_humidity();
+  56          
+  57          int i;
+  58          
+  59          //MAIN FUNCTION////////////////////////////////////////////////////////////////
+  60          
+  61          void main(){
+  62   1        button = 0xFF;    //input button
+  63   1        lcd_initialization();
+  64   1        lcd_setup();
+  65   1        hum_err = 0;
+  66   1        
+  67   1        while(1){
+  68   2          check_button_pressed();
+  69   2          read_temperature();
+  70   2          read_humidity();
+  71   2          DHT11 = 1;
+  72   2        }
+  73   1      }
+  74          
+  75          //HELPER FUNCTIONS/////////////////////////////////////////////////////////////
+  76          
+  77              //LCD SETUP////////////////////////////////////////////////////////////////
+  78          
+  79              void lcd_initialization(){
+  80   1            send_command(0x38); //2 lines and 5×7 matrix
+  81   1            send_command(0x0C); //Display ON, cursor OFF
+  82   1            send_command(0x01); //Clear display screen
+  83   1            send_command(0x80); //Force cursor to beginning of first line
+  84   1            display("Initializing...");
+  85   1            delay(5000);  //5 sec
+  86   1            send_command(0x01); //clear display
+  87   1          }
+  88              
+  89              void lcd_setup(){
+  90   1            send_command(01);
+  91   1            send_command(0x80); //Force cursor to beginning (1st line)
+  92   1            display("Temp : ");
+  93   1            
+  94   1            send_command(0xC0); //Force cursor to beginning (2nd line)
+  95   1            display("Hum : ");
+  96   1          }
+  97              
+  98              //CHECK BUTTON PRESSED/////////////////////////////////////////////////////
+  99              void check_button_pressed(){
+ 100   1            if(button == 0){
+ 101   2              send_command(0x01);
+ 102   2              display("Wait for 5");
+ 103   2              for(i=4; i>=0; i--){
+ 104   3                delay(1000);
+ 105   3                send_command(0x89);
+ 106   3                send_data(i + 48);
+ 107   3              }
+ 108   2              send_command(0x01);
+ 109   2              lcd_setup();
+ 110   2            } 
+ 111   1          }
+ 112          
+ 113              //TEMPERARURE READ FROM ANALOG LM35////////////////////////////////////////
+ 114              void read_temperature(){
+ 115   1            temperature = adc();   //read and convert temperature from sensor
+C51 COMPILER V9.60.0.0   TEMP_ANALOG                                                       05/25/2021 20:20:43 PAGE 3   
+
+ 116   1            if(temperature > 32){
+ 117   2              temp_err = 1;
+ 118   2              send_command(0x8D);
+ 119   2              display("Hi");
+ 120   2            } else if(temperature < 27){
+ 121   2              temp_err = 1;
+ 122   2              send_command(0x8D);
+ 123   2              display("Lo");
+ 124   2            } else {
+ 125   2              temp_err = 0;
+ 126   2              send_command(0x8D);
+ 127   2              display("   ");
+ 128   2            }
+ 129   1            display_temperature();
+ 130   1          }
+ 131              
+ 132              //HUMIDITY READ FROM DHT11/////////////////////////////////////////////////
+ 133              void read_humidity(){
+ 134   1            request();
+ 135   1            response();
+ 136   1          
+ 137   1            int_rh = receive_data();  //store first 8 bits in int_rh
+ 138   1            dec_rh = receive_data();  //store next 8 bits in dec_rh
+ 139   1            int_temp = receive_data();  //store next 8 bits in int_temp
+ 140   1            dec_temp = receive_data();  //store next 8 bits in dec_temp
+ 141   1            checksum = receive_data();  //store last 8 bits in checksum
+ 142   1            
+ 143   1            humidity = int_rh;
+ 144   1            
+ 145   1            if(humidity > 85){
+ 146   2              hum_err = 1;
+ 147   2              send_command(0xCA);
+ 148   2              display("Hi");
+ 149   2            }else if(humidity < 70){
+ 150   2              hum_err = 1;
+ 151   2              send_command(0xCA);
+ 152   2              display("Lo");
+ 153   2            } else {
+ 154   2              hum_err = 0;
+ 155   2              send_command(0xCA);
+ 156   2              display("   ");
+ 157   2            }
+ 158   1      
+ 159   1            if ((int_rh + dec_rh + int_temp + dec_temp) != checksum){
+ 160   2              hum_err = 1;
+ 161   2              send_command(0xCA);
+ 162   2              display("Err");
+ 163   2            }
+ 164   1            display_humidity();
+ 165   1            delay_50ms();
+ 166   1        }
+ 167              
+ 168              //TEMPERATURE DISPLAY//////////////////////////////////////////////////////
+ 169          
+ 170              void display_temperature(){
+ 171   1              unsigned char hundreds = (temperature/100)+48;
+ 172   1              unsigned char tens = ((temperature/10)%10)+48;
+ 173   1              unsigned char units = (temperature%10)+48;
+ 174   1            
+ 175   1              send_command(0x87);    //send cursor to 7th character on LCD (1st line)
+ 176   1            
+ 177   1              if(hundreds <= 48){
+C51 COMPILER V9.60.0.0   TEMP_ANALOG                                                       05/25/2021 20:20:43 PAGE 4   
+
+ 178   2                if(tens <= 48){
+ 179   3                  send_data(' ');   //Example: 003 -> __3
+ 180   3                  send_data(' ');
+ 181   3                  send_data(units);
+ 182   3                  send_data(0x60); // character for degrees
+ 183   3                  send_data('C');
+ 184   3                }else{
+ 185   3                  send_data(' ');  //Example: 023 -> _23
+ 186   3                  send_data(tens);
+ 187   3                  send_data(units);
+ 188   3                  send_data(0x60); 
+ 189   3                  send_data('C');
+ 190   3                }
+ 191   2              }else{
+ 192   2                  send_data(hundreds);  //Example: 123 -> 123
+ 193   2                  send_data(tens);
+ 194   2                  send_data(units);
+ 195   2                  send_data(0x60); 
+ 196   2                  send_data('C');
+ 197   2              }
+ 198   1          }
+ 199              
+ 200              //HUMIDITY DISPLAY/////////////////////////////////////////////////////////
+ 201              void display_humidity(){
+ 202   1              unsigned char tens = ((humidity/10)%10)+48;
+ 203   1              unsigned char units = (humidity%10)+48;
+ 204   1            
+ 205   1              send_command(0xC6);    //send cursor to 6th character on LCD (2nd line)
+ 206   1            
+ 207   1              if(tens <= 48){
+ 208   2                send_data(' ');
+ 209   2                send_data(units);
+ 210   2                send_data('%');
+ 211   2              }else{
+ 212   2                send_data(tens);
+ 213   2                send_data(units);
+ 214   2                send_data('%');
+ 215   2              }
+ 216   1          }
+ 217            
+ 218          
+ 219          //DELAYS///////////////////////////////////////////////////////////////////////
+ 220              
+ 221              
+ 222              //delay _using timers (used to decide if the HIGH pulse from the DHT11)
+ 223               
+ 224          void delay_30us(){ //delay _using timers (used to decide if the HIGH pulse from the DHT11 represents a log
+             -ic '0' of a logic '1'
+ 225   1        TMOD = 0x01;     //        logic '1' is HIGH for LONGER than 30us
+ 226   1        TH0 = 0xFF;      //        logic '0' is HIGH for LESS than 30us                       
+ 227   1        TL0 = 0xF1;   
+ 228   1        TR0 = 1;    
+ 229   1        while(!TF0);
+ 230   1        TR0 = 0;    
+ 231   1        TF0 = 0;    
+ 232   1      }
+ 233              
+ 234              
+ 235          void delay_5ms(){  //delay _using timers (used for sending _data to LCD)
+ 236   1        TMOD = 0x01;
+ 237   1        TH0 = 0xEE;
+ 238   1        TL0 = 0x00;
+C51 COMPILER V9.60.0.0   TEMP_ANALOG                                                       05/25/2021 20:20:43 PAGE 5   
+
+ 239   1        TR0 = 1;
+ 240   1        while(!TF0);
+ 241   1        TR0 = 0;
+ 242   1        TF0 = 0;
+ 243   1      }
+ 244          
+ 245          void delay_20ms(){  //delay _using timers (used for request sent to DHT11 -> 18 ms actually)
+ 246   1        TMOD = 0x01;
+ 247   1        TH0 = 0xB7;
+ 248   1        TL0 = 0xFF;
+ 249   1        TR0 = 1;
+ 250   1        while(!TF0);
+ 251   1        TR0 = 0;
+ 252   1        TF0 = 0;
+ 253   1      }
+ 254          
+ 255          void delay_50ms(){
+ 256   1        TMOD = 0x01;
+ 257   1        TH0 = 0x4B;
+ 258   1        TL0 = 0xFE;
+ 259   1        TR0 = 1;
+ 260   1        while(!TF0);
+ 261   1        TR0 = 0;
+ 262   1        TF0 = 0;
+ 263   1      }
+ 264          
+ 265          void delay_1s(){
+ 266   1        for(i=0;i<20;i++){
+ 267   2          delay_50ms();
+ 268   2        }
+ 269   1      }
+ 270          
+ 271          void delay(unsigned int count)  //soft delay method
+ 272          {
+ 273   1      int i,j;
+ 274   1      for(i=0;i<count;i++)
+ 275   1      for(j=0;j<100;j++);
+ 276   1      }
+ 277          
+ 278          //LCD INTERFACING//////////////////////////////////////////////////////////////
+ 279          
+ 280          void send_command(unsigned int command_value){
+ 281   1        P2 = command_value;  //_data pins of the LCD are connected to port P2
+ 282   1        rs = 0; //command mode
+ 283   1        rw = 0; //write mode
+ 284   1        en = 1;        //HIGH to LOW pulse
+ 285   1        delay_5ms();   //needed for the LCD to display _data
+ 286   1        en = 0;
+ 287   1      }
+ 288          
+ 289          void send_data(unsigned int data_value){
+ 290   1        P2 = data_value;
+ 291   1        rs = 1; //_data mode
+ 292   1        rw = 0;
+ 293   1        en = 1;
+ 294   1        delay_5ms();
+ 295   1        en = 0;
+ 296   1      }
+ 297          
+ 298          void display(unsigned char *s){  //function used to display strings of characters (_using pointers)
+ 299   1        while(*s){
+ 300   2          send_data(*s++);
+C51 COMPILER V9.60.0.0   TEMP_ANALOG                                                       05/25/2021 20:20:43 PAGE 6   
+
+ 301   2        }
+ 302   1      }
+ 303          
+ 304          //ADC INTERFACING//////////////////////////////////////////////////////////////
+ 305          
+ 306          unsigned char adc(){  //ANALOG TO DIGITAL CONVERSION
+ 307   1        wr = 0;  //write ready
+ 308   1        rd = 1;  //read ready
+ 309   1        wr = 1;  //start conversion
+ 310   1        while(intr==1);  //wait for end of conversion confirmation
+ 311   1        rd = 0;   //send converted _data to the digital output pins
+ 312   1        digital_value = P1;  //ADC's digital output pins are connected to port P1 (digital_value is a global vari
+             -able)
+ 313   1        
+ 314   1        return digital_value;
+ 315   1      }
+ 316          
+ 317          //DHT11 INTERFACING////////////////////////////////////////////////////////////
+ 318          
+ 319          //request sent by our microcontroller to "wake-up" the DHT11 sensor
+ 320          void request(){
+ 321   1        DHT11 = 0;    
+ 322   1        delay_20ms(); //the datasheet says 18ms -> 20ms just to make sure
+ 323   1        DHT11 = 1;    
+ 324   1      }
+ 325          //response sent back to the microcontroller from DHT11 (this signals that the sensor is ready to send _dat
+             -a)
+ 326          void response(){
+ 327   1        DHT11 = 1;
+ 328   1        while(DHT11==1);
+ 329   1        while(DHT11==0); //~54us
+ 330   1        while(DHT11==1); //~80us
+ 331   1      }
+ 332          
+ 333          unsigned int receive_data(){
+ 334   1        unsigned int i, c = 0;  
+ 335   1        DHT11 = 1;
+ 336   1        for (i=0; i<8; i++) //for each of the 5 blocks of 8 bits
+ 337   1        { 
+ 338   2          while(DHT11==0); //initial state
+ 339   2          delay_30us();  //check if '0' or '1'
+ 340   2          
+ 341   2          if(DHT11 == 1){  //still HIGH results in logic '1'
+ 342   3            c = (c<<1)|(0x01);  //shift left and set LSB on 1 
+ 343   3          }
+ 344   2          else{            //LOW results in logic '0'
+ 345   3            c = (c<<1);         //shift left and LSB will become 0 now
+ 346   3          }
+ 347   2          while(DHT11==1);  //wait if DHT11 is still high
+ 348   2        }
+ 349   1        return c;
+ 350   1      }
+ 351          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    911    ----
+   CONSTANT SIZE    =     56    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     15       8
+   IDATA SIZE       =   ----    ----
+C51 COMPILER V9.60.0.0   TEMP_ANALOG                                                       05/25/2021 20:20:43 PAGE 7   
+
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

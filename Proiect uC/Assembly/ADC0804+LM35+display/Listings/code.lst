@@ -1,0 +1,496 @@
+A51 MACRO ASSEMBLER  CODE                                                                 05/29/2021 19:56:05 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\code.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE code.a51 SET(SMALL) DEBUG PRINT(.\Listings\code.lst) OBJECT(.\Objects\c
+                      ode.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 0000h
+0000 802E              2     sjmp main
+                       3             
+                       4     
+  0085                 5     sbit rs = P0^5
+  0086                 6     sbit rw = P0^6
+  0087                 7     sbit en = P0^7
+                       8     
+                       9     
+  0080                10     sbit read = P0^0
+  0081                11     sbit write = P0^1
+  0082                12     sbit intr = P0^2
+                      13     
+                      14     
+  00B7                15     sbit DHT11 = P3^7
+                      16     
+                      17     
+  0084                18     sbit temp_err = P0^4
+  00B0                19     sbit hum_err = P3^0
+                      20     
+                      21     
+  0083                22     sbit button = P0^3
+                      23             
+  0020                24     temperature equ 20h ;address in RAM where we will store the temperature
+                      25             
+  0021                26     irh equ 21h ;integral humidity
+  0022                27     drh equ 22h ;decimal humidity
+  0023                28     itmp equ 23h ;integral temperature
+  0024                29     dtmp equ 24h ;decimal temperature
+  0025                30     checksum equ 25h ;checksum of the four 8-bit packs (irh + drh+ itemp + dtemp)
+                      31     
+  0026                32     humidity equ 26h ;address in RAM where we will store the humidity
+                      33     
+0030                  34     org 30h
+0030                  35             main:
+0030 1191             36                     ACALL lcd_initialization
+0032 11C4             37                     acall lcd_setup
+                      38                     
+0034                  39                     infinite_loop:
+0034 31C4             40                     acall check_button_pressed
+0036 3118             41                     acall read_temperature
+0038 3181             42                     acall read_humidity
+                      43                     
+003A D2B7             44                     setb DHT11
+                      45                     
+003C 80F6             46                     sjmp infinite_loop
+                      47             
+                      48     
+003E                  49     delay_30us:
+003E 758901           50             MOV TMOD, #01h   
+0041 758CFF           51             MOV TH0, #0FFh                                  
+0044 758AF1           52             MOV TL0, #0F1h          
+0047 D28C             53             SETB TR0                
+0049                  54             here1:
+0049 308DFD           55                     JNB TF0, here1
+004C C28C             56             CLR TR0
+004E C28D             57             CLR TF0
+A51 MACRO ASSEMBLER  CODE                                                                 05/29/2021 19:56:05 PAGE     2
+
+0050 22               58             RET     
+                      59     
+                      60     
+0051                  61     delay_5ms:
+0051 758901           62             MOV TMOD, #01h   
+0054 758CEC           63             MOV TH0, #0ECh                                  
+0057 758A80           64             MOV TL0, #80h           
+005A D28C             65             SETB TR0                
+005C                  66             here2:
+005C 308DFD           67                     JNB TF0, here2
+005F C28C             68             CLR TR0
+0061 C28D             69             CLR TF0
+0063 22               70             RET     
+                      71             
+0064                  72     delay_20ms:
+0064 758901           73             MOV TMOD, #01h   
+0067 758CB2           74             MOV TH0, #0B2h                                  
+006A 758AFF           75             MOV TL0, #0FFh          
+006D D28C             76             SETB TR0                
+006F                  77             here3:
+006F 308DFD           78                     JNB TF0, here3
+0072 C28C             79             CLR TR0
+0074 C28D             80             CLR TF0
+0076 22               81             RET     
+                      82             
+                      83     ;rutina pentru a trimite COMENZI la LCD
+                      84     ; ATENTIE! registrul A (acumulator) trebuie incarcat inainte de a 
+                      85     ; apela subrutina cu valoarea hexa a comenzii dorite
+0077                  86     send_command:
+0077 F5A0             87             MOV P2, a
+0079 C285             88             CLR rs ;command mode
+007B C286             89             CLR rw ;write mode
+007D D287             90             SETB en   ;high to low pulse in order to send data
+007F 1151             91             ACALL delay_5ms
+0081 C287             92             CLR en
+0083 22               93             RET
+                      94     
+                      95     ;rutina pentru a trimite DATE la LCD
+                      96     ; ATENTIE! registrul A (acumulator) trebuie incarcat inainte de a 
+                      97     ; apela subrutina cu valoarea hexa a datelor dorite
+0084                  98     send_data:
+0084 F5A0             99             MOV P2, a
+0086 D285            100             SETB rs ;data mode
+0088 C286            101             CLR rw
+008A D287            102             SETB en
+008C 1151            103             ACALL delay_5ms
+008E C287            104             CLR en
+0090 22              105             RET
+                     106     
+0091                 107     lcd_initialization:
+0091 7438            108             MOV a, #38h
+0093 1177            109             ACALL send_command
+0095 740C            110             MOV a, #0Ch
+0097 1177            111             ACALL send_command
+0099 7401            112             MOV a, #01h
+009B 1177            113             ACALL send_command
+009D 7480            114             MOV a, #80h
+009F 1177            115             ACALL send_command
+                     116             
+00A1 7448            117             MOV a, #'H'
+00A3 1184            118             ACALL send_data
+00A5 7465            119             MOV a, #'e'
+00A7 1184            120             ACALL send_data
+00A9 746C            121             MOV a, #'l'
+00AB 1184            122             ACALL send_data
+00AD 746C            123             MOV a, #'l'
+A51 MACRO ASSEMBLER  CODE                                                                 05/29/2021 19:56:05 PAGE     3
+
+00AF 1184            124             ACALL send_data
+00B1 746F            125             MOV a, #'o'
+00B3 1184            126             ACALL send_data
+00B5 7421            127             MOV a, #'!'
+00B7 1184            128             ACALL send_data
+                     129             
+00B9 78FA            130             MOV r0, #0FAh 
+00BB                 131             loop1:
+00BB 1164            132                     ACALL delay_20ms
+00BD D8FC            133                     DJNZ r0, loop1
+                     134             
+00BF 7401            135             MOV a, #01h
+00C1 1177            136             ACALL send_command
+00C3 22              137             RET
+                     138     
+00C4                 139     lcd_setup:
+00C4 7401            140             MOV a, #01h
+00C6 1177            141             ACALL send_command
+00C8 7480            142             MOV a, #80h
+00CA 1177            143             ACALL send_command
+                     144             
+00CC 7454            145             mov a, #'T'
+00CE 1184            146             acall send_data
+00D0 7465            147             mov a, #'e'
+00D2 1184            148             acall send_data
+00D4 746D            149             mov a, #'m'
+00D6 1184            150             acall send_data
+00D8 7470            151             mov a, #'p'
+00DA 1184            152             acall send_data
+00DC 7420            153             mov a, #' '
+00DE 1184            154             acall send_data
+00E0 743A            155             mov a, #':'
+00E2 1184            156             acall send_data
+00E4 7420            157             mov a, #' '
+00E6 1184            158             acall send_data
+                     159             
+00E8 74C0            160             MOV a, #0C0h
+00EA 1177            161             ACALL send_command
+                     162             
+00EC 7448            163             mov a, #'H'
+00EE 1184            164             acall send_data
+00F0 7475            165             mov a, #'u'
+00F2 1184            166             acall send_data
+00F4 746D            167             mov a, #'m'
+00F6 1184            168             acall send_data
+00F8 7420            169             mov a, #' '
+00FA 1184            170             acall send_data
+00FC 743A            171             mov a, #':'
+00FE 1184            172             acall send_data
+0100 7420            173             mov a, #' '
+0102 1184            174             acall send_data
+0104 22              175             ret
+                     176     
+0105                 177     adc:
+0105 C281            178             clr write
+0107 D280            179             setb read
+0109 D281            180             setb write
+010B                 181             wait:
+010B 2082FD          182                     jb intr, wait
+010E C280            183             clr read
+0110 7590FF          184             mov P1, #0FFh
+0113 E590            185             mov a, P1
+0115 F520            186             mov temperature, a
+0117 22              187             ret
+                     188             
+0118                 189     read_temperature:
+A51 MACRO ASSEMBLER  CODE                                                                 05/29/2021 19:56:05 PAGE     4
+
+0118 3105            190             acall adc
+011A 311D            191             acall display_temperature
+011C 22              192             ret
+                     193             
+011D                 194     display_temperature:
+011D 7487            195             MOV a, #87h
+011F 1177            196             ACALL send_command
+                     197             
+0121 E520            198             mov a, temperature
+0123 75F00A          199             mov b, #10
+0126 84              200             div ab
+0127 A8F0            201             mov r0, b
+0129 75F00A          202             mov b, #10
+012C 84              203             div ab
+012D A9F0            204             mov r1, b
+012F 75F00A          205             mov b, #10
+0132 84              206             div ab
+0133 AAF0            207             mov r2, b
+                     208             
+0135 EA              209             mov a, r2
+0136 2430            210             add a, #48
+0138 1184            211             acall send_data
+                     212             
+013A E9              213             mov a, r1
+013B 2430            214             add a, #48
+013D 1184            215             acall send_data
+                     216             
+013F E8              217             mov a, r0
+0140 2430            218             add a, #48
+0142 1184            219             acall send_data
+                     220             
+0144 7460            221             mov a, #60h
+0146 1184            222             acall send_data
+                     223             
+0148 7443            224             mov a, #'C'
+014A 1184            225             acall send_data
+                     226     
+014C 22              227             ret
+                     228     
+014D                 229     request:
+014D C2B7            230             clr DHT11
+014F 1164            231             acall delay_20ms
+0151 D2B7            232             setb DHT11
+0153 22              233             ret
+                     234     
+0154                 235     response:
+0154 D2B7            236             setb DHT11
+0156                 237             wait2:
+0156 20B7FD          238                     jb DHT11, wait2
+0159                 239             wait3:
+0159 30B7FD          240                     jnb DHT11, wait3
+015C                 241             wait4:
+015C 20B7FD          242                     jb DHT11, wait4
+015F 22              243             ret
+                     244     
+                     245     ;received 8 bits will be sored in a (accumulator)
+0160                 246     receive_data:
+0160 E500            247             mov a, 00000000b
+0162 D2B7            248             setb DHT11
+                     249             
+0164 7808            250             mov r0, #08
+0166                 251             loop2:
+0166                 252                     wait5:
+0166 30B7FD          253                     jnb DHT11, wait5
+                     254                     
+0169 113E            255                     acall delay_30us
+A51 MACRO ASSEMBLER  CODE                                                                 05/29/2021 19:56:05 PAGE     5
+
+                     256                     
+016B 20B703          257                     jb DHT11, logic_one
+016E 30B706          258                     jnb DHT11, logic_zero
+                     259                     
+0171                 260                     logic_one:
+0171 C3              261                             clr c
+0172 33              262                             rlc a
+                     263                             
+0173 4401            264                             orl a, #00000001b
+0175 8004            265                             jmp done
+                     266                     
+0177                 267                     logic_zero:
+0177 C3              268                             clr c
+0178 33              269                             rlc a
+                     270                             
+0179 8000            271                             jmp done
+                     272                     
+017B                 273                     done:
+017B                 274                             wait6:
+017B 20B7FD          275                                     jb DHT11, wait6
+017E D8E6            276                             djnz r0, loop2
+0180 22              277             ret
+                     278             
+0181                 279     read_humidity:
+0181 314D            280             acall request
+0183 3154            281             acall response
+                     282             
+0185 3160            283             acall receive_data
+0187 F521            284             mov irh, a
+                     285             
+0189 3160            286             acall receive_data
+018B F522            287             mov drh, a
+                     288             
+018D 3160            289             acall receive_data
+018F F523            290             mov itmp, a
+                     291             
+0191 3160            292             acall receive_data
+0193 F524            293             mov dtmp, a
+                     294             
+0195 3160            295             acall receive_data
+0197 F525            296             mov checksum, a
+                     297             
+0199 852126          298             mov humidity, irh
+                     299             
+019C 31A3            300             acall display_humidity
+                     301             
+019E 1164            302             acall delay_20ms
+01A0 1164            303             acall delay_20ms
+                     304             
+01A2 22              305             ret
+                     306     
+01A3                 307     display_humidity:
+01A3 74C6            308             mov a, #0C6h
+01A5 1177            309             acall send_command
+                     310             
+01A7 E526            311             mov a, humidity
+01A9 75F00A          312             mov b, #10
+01AC 84              313             div ab
+01AD A8F0            314             mov r0, b
+01AF 75F00A          315             mov b, #10
+01B2 84              316             div ab
+01B3 A9F0            317             mov r1, b
+                     318             
+01B5 E9              319             mov a, r1
+01B6 2430            320             add a, #48
+01B8 1184            321             acall send_data
+A51 MACRO ASSEMBLER  CODE                                                                 05/29/2021 19:56:05 PAGE     6
+
+                     322             
+01BA E8              323             mov a, r0
+01BB 2430            324             add a, #48
+01BD 1184            325             acall send_data
+                     326             
+01BF 7425            327             mov a, #'%'
+01C1 1184            328             acall send_data
+                     329             
+01C3 22              330             ret
+                     331     
+01C4                 332     check_button_pressed:
+01C4 208345          333             jb button, done1
+                     334             
+01C7 7401            335             mov a, #01h
+01C9 1177            336             acall send_command
+                     337             
+01CB 7457            338             mov a, #'W'
+01CD 1184            339             acall send_data
+                     340             
+01CF 7461            341             mov a, #'a'
+01D1 1184            342             acall send_data
+                     343             
+01D3 7469            344             mov a, #'i'
+01D5 1184            345             acall send_data
+                     346             
+01D7 7474            347             mov a, #'t'
+01D9 1184            348             acall send_data
+                     349             
+01DB 7420            350             mov a, #' '
+01DD 1184            351             acall send_data
+                     352             
+01DF 7466            353             mov a, #'f'
+01E1 1184            354             acall send_data
+                     355             
+01E3 746F            356             mov a, #'o'
+01E5 1184            357             acall send_data
+                     358             
+01E7 7472            359             mov a, #'r'
+01E9 1184            360             acall send_data
+                     361             
+01EB 7420            362             mov a, #' '
+01ED 1184            363             acall send_data
+                     364             
+01EF 7435            365             mov a, #'5'
+01F1 1184            366             acall send_data
+                     367             
+01F3 7804            368             mov r0, #04
+01F5                 369             loop_display:
+01F5 7932            370                     mov r1, #50
+01F7                 371                     loop_delay:
+01F7 1164            372                             acall delay_20ms
+01F9 D9FC            373                             djnz r1, loop_delay
+                     374                     
+01FB 7489            375                     mov a, #89h
+01FD 1177            376                     acall send_command
+                     377                     
+01FF E8              378                     mov a, r0
+0200 2430            379                     add a, #48
+                     380                     
+0202 1184            381                     acall send_data
+                     382                     
+0204 D8EF            383                     djnz r0, loop_display
+                     384             
+0206 7401            385             mov a, #01h
+0208 1177            386             acall send_command
+                     387             
+A51 MACRO ASSEMBLER  CODE                                                                 05/29/2021 19:56:05 PAGE     7
+
+020A 11C4            388             acall lcd_setup
+                     389             
+020C                 390             done1:
+020C 00              391                     nop
+020D 22              392             ret
+                     393     
+                     394     
+                     395             
+                     396     end
+A51 MACRO ASSEMBLER  CODE                                                                 05/29/2021 19:56:05 PAGE     8
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E               T Y P E  V A L U E   ATTRIBUTES
+
+ADC. . . . . . . . .  C ADDR   0105H   A   
+B. . . . . . . . . .  D ADDR   00F0H   A   
+BUTTON . . . . . . .  B ADDR   0080H.3 A   
+CHECKSUM . . . . . .  N NUMB   0025H   A   
+CHECK_BUTTON_PRESSED  C ADDR   01C4H   A   
+DELAY_20MS . . . . .  C ADDR   0064H   A   
+DELAY_30US . . . . .  C ADDR   003EH   A   
+DELAY_5MS. . . . . .  C ADDR   0051H   A   
+DHT11. . . . . . . .  B ADDR   00B0H.7 A   
+DISPLAY_HUMIDITY . .  C ADDR   01A3H   A   
+DISPLAY_TEMPERATURE.  C ADDR   011DH   A   
+DONE . . . . . . . .  C ADDR   017BH   A   
+DONE1. . . . . . . .  C ADDR   020CH   A   
+DRH. . . . . . . . .  N NUMB   0022H   A   
+DTMP . . . . . . . .  N NUMB   0024H   A   
+EN . . . . . . . . .  B ADDR   0080H.7 A   
+HERE1. . . . . . . .  C ADDR   0049H   A   
+HERE2. . . . . . . .  C ADDR   005CH   A   
+HERE3. . . . . . . .  C ADDR   006FH   A   
+HUMIDITY . . . . . .  N NUMB   0026H   A   
+HUM_ERR. . . . . . .  B ADDR   00B0H.0 A   
+INFINITE_LOOP. . . .  C ADDR   0034H   A   
+INTR . . . . . . . .  B ADDR   0080H.2 A   
+IRH. . . . . . . . .  N NUMB   0021H   A   
+ITMP . . . . . . . .  N NUMB   0023H   A   
+LCD_INITIALIZATION .  C ADDR   0091H   A   
+LCD_SETUP. . . . . .  C ADDR   00C4H   A   
+LOGIC_ONE. . . . . .  C ADDR   0171H   A   
+LOGIC_ZERO . . . . .  C ADDR   0177H   A   
+LOOP1. . . . . . . .  C ADDR   00BBH   A   
+LOOP2. . . . . . . .  C ADDR   0166H   A   
+LOOP_DELAY . . . . .  C ADDR   01F7H   A   
+LOOP_DISPLAY . . . .  C ADDR   01F5H   A   
+MAIN . . . . . . . .  C ADDR   0030H   A   
+P0 . . . . . . . . .  D ADDR   0080H   A   
+P1 . . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . . .  D ADDR   00B0H   A   
+READ . . . . . . . .  B ADDR   0080H.0 A   
+READ_HUMIDITY. . . .  C ADDR   0181H   A   
+READ_TEMPERATURE . .  C ADDR   0118H   A   
+RECEIVE_DATA . . . .  C ADDR   0160H   A   
+REQUEST. . . . . . .  C ADDR   014DH   A   
+RESPONSE . . . . . .  C ADDR   0154H   A   
+RS . . . . . . . . .  B ADDR   0080H.5 A   
+RW . . . . . . . . .  B ADDR   0080H.6 A   
+SEND_COMMAND . . . .  C ADDR   0077H   A   
+SEND_DATA. . . . . .  C ADDR   0084H   A   
+TEMPERATURE. . . . .  N NUMB   0020H   A   
+TEMP_ERR . . . . . .  B ADDR   0080H.4 A   
+TF0. . . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . . .  B ADDR   0088H.4 A   
+WAIT . . . . . . . .  C ADDR   010BH   A   
+WAIT2. . . . . . . .  C ADDR   0156H   A   
+WAIT3. . . . . . . .  C ADDR   0159H   A   
+WAIT4. . . . . . . .  C ADDR   015CH   A   
+WAIT5. . . . . . . .  C ADDR   0166H   A   
+A51 MACRO ASSEMBLER  CODE                                                                 05/29/2021 19:56:05 PAGE     9
+
+WAIT6. . . . . . . .  C ADDR   017BH   A   
+WRITE. . . . . . . .  B ADDR   0080H.1 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
